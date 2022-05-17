@@ -1,7 +1,9 @@
 <template>
   <div id="login">
     <div class="container">
-      
+      <form>
+
+      </form>
     </div>
   </div>
 </template>

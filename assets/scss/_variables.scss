@@ -1,0 +1,9 @@
+$blue: #004489;
+$lightBlueGradient: linear-gradient(325deg, rgb(12, 139, 228) 30%, rgb(74, 176, 226) 70%);
+
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
