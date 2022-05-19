@@ -2,7 +2,9 @@
 
 ## Install guide
 
-Follow the .env.example file to configure your .env file
+Follow the .env.example file to configure your .env file.
+
+Admin account is test@mail.fr with password: aze
 
 ## Build Setup
 
