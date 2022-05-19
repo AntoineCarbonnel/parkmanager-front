@@ -48,10 +48,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // Doc: https://www.primefaces.org/primevue/showcase-v2/#/setup
-    'primevue/nuxt',
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    '@nuxtjs/axios', // https://go.nuxtjs.dev/axios
+    'cookie-universal-nuxt', // Doc: https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt#readme
+
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

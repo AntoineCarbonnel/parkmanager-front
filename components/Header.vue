@@ -8,7 +8,7 @@
         <nuxt-link class="button" to="login">
           Se connecter
         </nuxt-link>
-        <nuxt-link class="button" to="login">
+        <nuxt-link class="button" to="register">
           S'inscrire
         </nuxt-link>
       </div>
@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 header {
   background-color: $blue;
-  padding: 40px 0 40px;
+  padding: 20px 0;
   position: sticky;
   z-index: 5;
   top: 0;

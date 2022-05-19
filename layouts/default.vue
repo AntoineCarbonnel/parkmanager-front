@@ -15,6 +15,7 @@ export default {
 <style lang="scss" scoped>
 #layout {
   @include flex(space-between, normal, $direction: column);
+  background-color: $offwhite;
   min-height: 100vh;
 
   > div {

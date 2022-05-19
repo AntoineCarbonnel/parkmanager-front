@@ -1,12 +1,10 @@
 <template>
-  <label for="">
-    <label :for="id" :class="{focus: labelizor}">
-      <input @focusin="isFocus = true" @focusout="isFocus = false" v-model="value" type="text"
-             :id="id" @input="$emit('input', value)">
-      <span class="label">
+  <label :for="id" :class="{focus: labelizor}">
+    <input @focusin="isFocus = true" @focusout="isFocus = false" v-model="value" :type="type"
+           :id="id" @input="$emit('input', value)">
+    <span class="label">
         {{ name }}
       </span>
-    </label>
   </label>
 </template>
 
@@ -25,17 +23,30 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    },
+    type: {
+      type: String,
+      default: 'text'
+    },
+    defaultValue: {
+      type: String,
+      default: ''
     }
   },
   data() {
     return {
       isFocus: false,
-      value: ''
+      value: this.defaultValue
     }
   },
   computed: {
     labelizor: function () {
-      return this.isFocus || this.parkingRequest.length > 0
+      return this.isFocus || this.value.length > 0
+    }
+  },
+  watch: {
+    value: function () {
+      this.$emit('input', this.value)
     }
   }
 }
@@ -50,7 +61,7 @@ label {
     position: absolute;
     transition: .2s;
     font-size: 1.2rem;
-    top: 15px;
+    top: 16px;
     left: 15px;
 
     &:hover {
@@ -59,11 +70,12 @@ label {
   }
 
   input {
+    border: 1px solid $offwhite;
     border-radius: 5px;
-    height: 60px;
-    border: none;
-    width: 100%;
     text-indent: 15px;
+    font-size: 1.1rem;
+    height: 60px;
+    width: 100%;
   }
 
   &.focus {
@@ -71,6 +83,10 @@ label {
       font-size: .9rem;
       top: 5px;
       color: $blue;
+    }
+
+    input {
+      border: 1px solid $blue;
     }
   }
 }

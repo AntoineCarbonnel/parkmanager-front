@@ -2,12 +2,19 @@
   <div id="homepage">
     <section id="find">
       <div class="container">
-        <form>
-          <Input name="Trouver votre parking" id="parking" v-model="parkingRequest" />
-            <div class="dropdown">
-
-            </div>
-        </form>
+        <div>
+          <Input name="Trouver votre parking" id="parking" v-model="parkingRequest"/>
+          <div v-if="parkingRequest.length > 0" class="dropdown">
+            <article class="parking" v-for="parking in filteredParkings" :key="parking.id">
+              <div>
+                {{ parking.name }}
+              </div>
+              <div>
+                {{ parking.address }}
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
     <section id="information">
@@ -31,7 +38,7 @@
               <nuxt-link class="button" to="login">
                 Se connecter
               </nuxt-link>
-              <nuxt-link class="button" to="login">
+              <nuxt-link class="button" to="register">
                 S'inscrire
               </nuxt-link>
             </div>
@@ -50,6 +57,16 @@ export default {
     return {
       parkingRequest: ''
     }
+  },
+  computed: {
+    filteredParkings: function () {
+      return this.parkings.filter(parking => parking.name.includes(this.parkingRequest))
+    }
+  },
+  async asyncData({$axios}) {
+    const parkings = await $axios.$get('parking')
+
+    return {parkings}
   }
 }
 </script>
@@ -63,10 +80,35 @@ export default {
     .container {
       @include flex();
 
-      form {
+      > div {
+        position: relative;
+        margin: 250px 0;
         @include flex();
-        margin: 300px 0;
         width: 100%;
+
+        .dropdown {
+          left: 10%;
+          top: 110%;
+          width: 80%;
+          border-radius: 5px;
+          position: absolute;
+          background-color: white;
+          @include flex($align: flex-start, $direction: column);
+
+          article {
+            @include flex(flex-start);
+            background-color: white;
+            padding: 10px 15px;
+            transition: .5s;
+            width: 100%;
+
+            &:hover {
+              background-color: $blue;
+              cursor: pointer;
+              color: white;
+            }
+          }
+        }
       }
     }
   }

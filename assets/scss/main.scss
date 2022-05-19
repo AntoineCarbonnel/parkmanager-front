@@ -17,6 +17,24 @@ html {
   box-sizing: border-box;
 }
 
+form {
+  @include flex($direction: column);
+  background-color: white;
+  padding: 50px 60px;
+  gap: 20px;
+
+  .buttons {
+    @include flex(flex-end);
+    width: 80%;
+  }
+
+  p {
+    a {
+      color: $blue;
+    }
+  }
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,6 +46,10 @@ html {
   padding: 10px 15px;
   cursor: pointer;
   color: white;
+
+  &.red {
+    background: red;
+  }
 }
 
 a {
@@ -40,4 +62,9 @@ input {
   font-family: "DIN Pro", sans-serif;
   outline: none;
   border: none;
+}
+
+button {
+  border: none;
+  outline: none;
 }
